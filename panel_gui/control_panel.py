@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'control_panel.ui'
+# Form implementation generated from reading panel_gui file 'control_panel.panel_gui'
 #
 # Created by: PyQt5 UI code generator 5.9.2
 #
@@ -8,7 +8,7 @@
 
 from PyQt5 import QtCore, QtWidgets
 
-from gui.cunstom_widgets import ClickableLabel
+from panel_gui.cunstom_widgets import ClickableLabel
 
 
 class Ui_MainWindow(object):
