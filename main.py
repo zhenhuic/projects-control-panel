@@ -1,9 +1,13 @@
+import subprocess
 import sys
 
 from PyQt5.QtCore import pyqtSlot
+from PyQt5.QtGui import QPixmap
 from PyQt5.QtWidgets import QMainWindow, QApplication
 
-from gui.control_panel import Ui_MainWindow
+from panel_gui.control_panel import Ui_MainWindow
+from pixmap_prep import images_prep_factory, array_to_QImage
+from config import label_image_paths_dict
 
 
 class MainWindow(QMainWindow, Ui_MainWindow):
@@ -11,66 +15,89 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         super().__init__()
         self.setupUi(self)
         self.label_1.clicked.connect(self.label_1_clicked)
-        self.label_1.released.connect(self.label_1_released)
         self.label_1.moved.connect(self.label_1_moved)
 
         self.label_2.clicked.connect(self.label_2_clicked)
-        self.label_2.released.connect(self.label_2_released)
         self.label_2.moved.connect(self.label_2_moved)
 
         self.label_3.clicked.connect(self.label_3_clicked)
-        self.label_3.released.connect(self.label_3_released)
         self.label_3.moved.connect(self.label_3_moved)
 
         self.label_3.clicked.connect(self.label_3_clicked)
-        self.label_3.released.connect(self.label_3_released)
         self.label_3.moved.connect(self.label_3_moved)
 
         self.label_4.clicked.connect(self.label_4_clicked)
-        self.label_4.released.connect(self.label_4_released)
         self.label_4.moved.connect(self.label_4_moved)
 
         self.label_5.clicked.connect(self.label_5_clicked)
-        self.label_5.released.connect(self.label_5_released)
         self.label_5.moved.connect(self.label_5_moved)
 
         self.label_6.clicked.connect(self.label_6_clicked)
-        self.label_6.released.connect(self.label_6_released)
         self.label_6.moved.connect(self.label_6_moved)
 
         self.label_7.clicked.connect(self.label_7_clicked)
-        self.label_7.released.connect(self.label_7_released)
         self.label_7.moved.connect(self.label_7_moved)
 
         self.label_8.clicked.connect(self.label_8_clicked)
-        self.label_8.released.connect(self.label_8_released)
         self.label_8.moved.connect(self.label_8_moved)
+
+        self.label_images_dict = images_prep_factory(label_image_paths_dict)
+
+        # 各label当前的状态标志位
+        # 0 -> 无鼠标移动到该区域且未启动程序
+        # 1 -> 鼠标移动到该区域但未启动程序
+        # 2 -> 已启动程序
+        self.statuses = [0] * 8
+
+        # 系统程序进程对象
+        self.processes = [None] * 8
 
     # ------------ label 1 -------------
     @pyqtSlot(bool)
     def label_1_clicked(self, trigger):
-        pass
+        if self.statuses[0] == 2:
+            if self.processes[0] is not None:
+                self.processes[0].terminate()
+                self.statuses[0] = 1
 
-    @pyqtSlot(bool)
-    def label_1_released(self, trigger):
-        print("released")
+                label_size = self.label_1.size()
+                qimage = array_to_QImage(self.label_images_dict["chen_1"][1], label_size)
+                self.label_1.setPixmap(QPixmap.fromImage(qimage))
+        else:
+            self.processes[0] = subprocess.Popen(
+                "D:\\Anaconda3\\envs\\pth\\python.exe E:\\Lab417\\xio-intrusion-detection\\gui_main.py",
+                cwd="E:\\Lab417\\xio-intrusion-detection")
+            self.statuses[0] = 2
+
+            label_size = self.label_1.size()
+            qimage = array_to_QImage(self.label_images_dict["chen_1"][2], label_size)
+            self.label_1.setPixmap(QPixmap.fromImage(qimage))
 
     @pyqtSlot(tuple)
     def label_1_moved(self, position):
         width = self.label_1.size().width()
         height = self.label_1.size().height()
-        
-        print(position)
-        print(width, height)
+
+        if self.mouse_incoming(position, (width, height)):
+            if self.statuses[0] == 0:
+                self.statuses[0] = 1
+
+                label_size = self.label_1.size()
+                qimage = array_to_QImage(self.label_images_dict["chen_1"][1], label_size)
+                self.label_1.setPixmap(QPixmap.fromImage(qimage))
+        else:
+            if self.statuses[0] == 1:
+                self.statuses[0] = 0
+
+                label_size = self.label_1.size()
+                qimage = array_to_QImage(self.label_images_dict["chen_1"][0], label_size)
+                self.label_1.setPixmap(QPixmap.fromImage(qimage))
+
 
     # ------------ label 2 -------------
     @pyqtSlot(bool)
     def label_2_clicked(self, trigger):
-        print("clicked")
-
-    @pyqtSlot(bool)
-    def label_2_released(self, trigger):
-        print("released")
+        pass
 
     @pyqtSlot(tuple)
     def label_2_moved(self, position):
@@ -84,10 +111,6 @@ class MainWindow(QMainWindow, Ui_MainWindow):
     def label_3_clicked(self, trigger):
         print("clicked")
 
-    @pyqtSlot(bool)
-    def label_3_released(self, trigger):
-        print("released")
-
     @pyqtSlot(tuple)
     def label_3_moved(self, position):
         width = self.label_3.size().width()
@@ -99,10 +122,6 @@ class MainWindow(QMainWindow, Ui_MainWindow):
     @pyqtSlot(bool)
     def label_4_clicked(self, trigger):
         print("clicked")
-
-    @pyqtSlot(bool)
-    def label_4_released(self, trigger):
-        print("released")
 
     @pyqtSlot(tuple)
     def label_4_moved(self, position):
@@ -116,10 +135,6 @@ class MainWindow(QMainWindow, Ui_MainWindow):
     def label_5_clicked(self, trigger):
         print("clicked")
 
-    @pyqtSlot(bool)
-    def label_5_released(self, trigger):
-        print("released")
-
     @pyqtSlot(tuple)
     def label_5_moved(self, position):
         width = self.label_5.size().width()
@@ -131,10 +146,6 @@ class MainWindow(QMainWindow, Ui_MainWindow):
     @pyqtSlot(bool)
     def label_6_clicked(self, trigger):
         print("clicked")
-
-    @pyqtSlot(bool)
-    def label_6_released(self, trigger):
-        print("released")
 
     @pyqtSlot(tuple)
     def label_6_moved(self, position):
@@ -148,10 +159,6 @@ class MainWindow(QMainWindow, Ui_MainWindow):
     def label_7_clicked(self, trigger):
         print("clicked")
 
-    @pyqtSlot(bool)
-    def label_7_released(self, trigger):
-        print("released")
-
     @pyqtSlot(tuple)
     def label_7_moved(self, position):
         width = self.label_7.size().width()
@@ -163,10 +170,6 @@ class MainWindow(QMainWindow, Ui_MainWindow):
     @pyqtSlot(bool)
     def label_8_clicked(self, trigger):
         print("clicked")
-
-    @pyqtSlot(bool)
-    def label_8_released(self, trigger):
-        print("released")
 
     @pyqtSlot(tuple)
     def label_8_moved(self, position):
