@@ -69,82 +69,61 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 
     @pyqtSlot(tuple)
     def label_2_moved(self, position):
-        width = self.label_2.size().width()
-        height = self.label_2.size().height()
-        print("moved")
-        print(position)
+        pass
 
     # ------------ label 3 -------------
     @pyqtSlot(bool)
     def label_3_clicked(self, trigger):
-        print("clicked")
+        pass
 
     @pyqtSlot(tuple)
     def label_3_moved(self, position):
-        width = self.label_3.size().width()
-        height = self.label_3.size().height()
-        print("moved")
-        print(position)
+        pass
 
     # ------------ label 4 -------------
     @pyqtSlot(bool)
     def label_4_clicked(self, trigger):
-        print("clicked")
+        pass
 
     @pyqtSlot(tuple)
     def label_4_moved(self, position):
-        width = self.label_4.size().width()
-        height = self.label_4.size().height()
-        print("moved")
-        print(position)
+        pass
 
     # ------------ label 5 -------------
     @pyqtSlot(bool)
     def label_5_clicked(self, trigger):
-        print("clicked")
+        pass
 
     @pyqtSlot(tuple)
     def label_5_moved(self, position):
-        width = self.label_5.size().width()
-        height = self.label_5.size().height()
-        print("moved")
-        print(position)
+        pass
 
     # ------------ label 6 -------------
     @pyqtSlot(bool)
     def label_6_clicked(self, trigger):
-        print("clicked")
+        pass
 
     @pyqtSlot(tuple)
     def label_6_moved(self, position):
-        width = self.label_6.size().width()
-        height = self.label_6.size().height()
-        print("moved")
-        print(position)
+        pass
 
     # ------------ label 7 -------------
     @pyqtSlot(bool)
     def label_7_clicked(self, trigger):
-        print("clicked")
+        pass
 
     @pyqtSlot(tuple)
     def label_7_moved(self, position):
-        width = self.label_7.size().width()
-        height = self.label_7.size().height()
-        print("moved")
-        print(position)
+        pass
 
     # ------------ label 8 -------------
     @pyqtSlot(bool)
     def label_8_clicked(self, trigger):
-        print("clicked")
+        pass
 
     @pyqtSlot(tuple)
     def label_8_moved(self, position):
-        width = self.label_8.size().width()
-        height = self.label_8.size().height()
-        print("moved")
-        print(position)
+        pass
 
     def mouse_clicked_action(self, index: int, label: ClickableLabel, project_name: str):
         if self.statuses[index] == 2:
