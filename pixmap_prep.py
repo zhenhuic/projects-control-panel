@@ -86,6 +86,8 @@ def images_prep_factory(label_images_dict: dict):
             prep_images.append(rect)
 
             prep_images_dict[name] = prep_images
+        else:
+            prep_images_dict[name] = None
 
     return prep_images_dict
 

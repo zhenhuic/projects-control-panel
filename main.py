@@ -6,8 +6,9 @@ from PyQt5.QtGui import QPixmap
 from PyQt5.QtWidgets import QMainWindow, QApplication
 
 from panel_gui.control_panel import Ui_MainWindow
+from panel_gui.cunstom_widgets import ClickableLabel
 from pixmap_prep import images_prep_factory, array_to_QImage
-from config import label_image_paths_dict
+from config import label_image_paths_dict, projects_command_dict, projects_cwd_dict
 
 
 class MainWindow(QMainWindow, Ui_MainWindow):
@@ -55,44 +56,11 @@ class MainWindow(QMainWindow, Ui_MainWindow):
     # ------------ label 1 -------------
     @pyqtSlot(bool)
     def label_1_clicked(self, trigger):
-        if self.statuses[0] == 2:
-            if self.processes[0] is not None:
-                self.processes[0].terminate()
-                self.statuses[0] = 1
-
-                label_size = self.label_1.size()
-                qimage = array_to_QImage(self.label_images_dict["chen_1"][1], label_size)
-                self.label_1.setPixmap(QPixmap.fromImage(qimage))
-        else:
-            self.processes[0] = subprocess.Popen(
-                "D:\\Anaconda3\\envs\\pth\\python.exe E:\\Lab417\\xio-intrusion-detection\\gui_main.py",
-                cwd="E:\\Lab417\\xio-intrusion-detection")
-            self.statuses[0] = 2
-
-            label_size = self.label_1.size()
-            qimage = array_to_QImage(self.label_images_dict["chen_1"][2], label_size)
-            self.label_1.setPixmap(QPixmap.fromImage(qimage))
+        self.mouse_clicked_action(0, self.label_1, "chen_1")
 
     @pyqtSlot(tuple)
     def label_1_moved(self, position):
-        width = self.label_1.size().width()
-        height = self.label_1.size().height()
-
-        if self.mouse_incoming(position, (width, height)):
-            if self.statuses[0] == 0:
-                self.statuses[0] = 1
-
-                label_size = self.label_1.size()
-                qimage = array_to_QImage(self.label_images_dict["chen_1"][1], label_size)
-                self.label_1.setPixmap(QPixmap.fromImage(qimage))
-        else:
-            if self.statuses[0] == 1:
-                self.statuses[0] = 0
-
-                label_size = self.label_1.size()
-                qimage = array_to_QImage(self.label_images_dict["chen_1"][0], label_size)
-                self.label_1.setPixmap(QPixmap.fromImage(qimage))
-
+        self.mouse_moved_action(position, 0, self.label_1, "chen_1")
 
     # ------------ label 2 -------------
     @pyqtSlot(bool)
@@ -177,7 +145,58 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         height = self.label_8.size().height()
         print("moved")
         print(position)
-    
+
+    def mouse_clicked_action(self, index: int, label: ClickableLabel, project_name: str):
+        if self.statuses[index] == 2:
+            if self.processes[index] is not None:
+                self.processes[index].terminate()
+                self.statuses[index] = 1
+                print("终止系统", project_name)
+
+                if self.label_images_dict[project_name] is not None:
+                    label_size = label.size()
+                    qimage = array_to_QImage(self.label_images_dict[project_name][1], label_size)
+                    label.setPixmap(QPixmap.fromImage(qimage))
+                else:
+                    print("未配置系统", project_name, "图片")
+            else:
+                print("系统", project_name, "进入启动状态但未开启进程!")
+        else:
+            if projects_command_dict[project_name] and projects_cwd_dict[project_name]:
+                self.processes[index] = subprocess.Popen(projects_command_dict[project_name],
+                                                         cwd=projects_cwd_dict[project_name])
+                self.statuses[index] = 2
+                print("启动系统", project_name)
+
+                if self.label_images_dict[project_name] is not None:
+                    label_size = label.size()
+                    qimage = array_to_QImage(self.label_images_dict[project_name][2], label_size)
+                    label.setPixmap(QPixmap.fromImage(qimage))
+                else:
+                    print("未配置系统", project_name, "图片")
+
+    def mouse_moved_action(self, position: tuple, index: int, label: ClickableLabel, project_name: str):
+        width = label.size().width()
+        height = label.size().height()
+        if self.mouse_incoming(position, (width, height)):
+            if self.statuses[index] == 0:
+                self.statuses[index] = 1
+                if self.label_images_dict[project_name] is not None:
+                    label_size = label.size()
+                    qimage = array_to_QImage(self.label_images_dict[project_name][1], label_size)
+                    label.setPixmap(QPixmap.fromImage(qimage))
+                else:
+                    print("未配置系统", project_name, "图片")
+        else:
+            if self.statuses[index] == 1:
+                self.statuses[index] = 0
+                if self.label_images_dict[project_name] is not None:
+                    label_size = label.size()
+                    qimage = array_to_QImage(self.label_images_dict[project_name][0], label_size)
+                    label.setPixmap(QPixmap.fromImage(qimage))
+                else:
+                    print("未配置系统", project_name, "图片")
+
     @staticmethod
     def mouse_incoming(mouse_pos: tuple, label_size: tuple) -> bool:
         x, y = mouse_pos
