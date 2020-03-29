@@ -66,7 +66,7 @@ def array_to_QImage(img, size):
     return qimage
 
 
-def images_prep_factory(label_images_dict: dict):
+def images_prep_factory(label_images_dict: dict, projects_view_name_dict: dict):
     prep_images_dict = {}
     for name, img_path in label_images_dict.items():
         if img_path is not None:
@@ -74,15 +74,15 @@ def images_prep_factory(label_images_dict: dict):
             orig = cv2.imread(img_path)
 
             dark = darken(orig, 0.5)
-            dark = draw_Chinese_words(dark, "智能安全监测系统", (20, 400))
+            dark = draw_Chinese_words(dark, projects_view_name_dict[name], (20, 400))
             prep_images.append(dark)
 
             tri = draw_triangle_center(orig, 65, (0, 255, 0))
-            tri = draw_Chinese_words(tri, "智能安全监测系统", (20, 400))
+            tri = draw_Chinese_words(tri, projects_view_name_dict[name], (20, 400))
             prep_images.append(tri)
 
             rect = draw_rectangle_center(orig, 60, (0, 0, 255))
-            rect = draw_Chinese_words(rect, "智能安全监测系统", (20, 400))
+            rect = draw_Chinese_words(rect, projects_view_name_dict[name], (20, 400))
             prep_images.append(rect)
 
             prep_images_dict[name] = prep_images
@@ -93,7 +93,7 @@ def images_prep_factory(label_images_dict: dict):
 
 
 if __name__ == '__main__':
-    orig = cv2.imread("images\\intrusion.jpg")
+    orig = cv2.imread("../images/intrusion.jpg")
 
     tri = draw_triangle_center(orig, 65, (0, 255, 0))
     tri = draw_Chinese_words(tri, "智能安全监测系统", (20, 400))
