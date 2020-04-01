@@ -69,9 +69,12 @@ def array_to_QImage(img, size):
 def images_prep_factory(label_images_dict: dict, projects_view_name_dict: dict):
     prep_images_dict = {}
     for name, img_path in label_images_dict.items():
-        if img_path is not None:
+        if img_path is not None and img_path != "":
             prep_images = []
             orig = cv2.imread(img_path)
+            if orig is None:
+                prep_images_dict[name] = None
+                break
 
             dark = darken(orig, 0.5)
             dark = draw_Chinese_words(dark, projects_view_name_dict[name], (20, 400))

@@ -1,6 +1,7 @@
 import subprocess
 import sys
 
+from PyQt5 import QtGui
 from PyQt5.QtCore import pyqtSlot
 from PyQt5.QtGui import QPixmap
 from PyQt5.QtWidgets import QMainWindow, QApplication
@@ -50,7 +51,11 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.processes = [None] * 8
 
         self.label_images_dict = images_prep_factory(label_image_paths_dict, projects_view_name_dict)
-        self.init_labels_pixmap()
+        # 初始化界面图片，这里界面打开会调用自动调用重写的resizeEvent方法，不需要手动初始化
+        # self.update_labels_pixmap()
+
+    def resizeEvent(self, event: QtGui.QResizeEvent) -> None:
+        self.update_labels_pixmap(None)  # size设为None表示图片大小自适应
 
     # ------------ label 1 -------------
     @pyqtSlot(bool)
@@ -118,32 +123,36 @@ class MainWindow(QMainWindow, Ui_MainWindow):
     # ------------ label 8 -------------
     @pyqtSlot(bool)
     def label_8_clicked(self, trigger):
-        pass
+        self.mouse_clicked_action(7, self.label_8, "yue")
 
     @pyqtSlot(tuple)
     def label_8_moved(self, position):
-        pass
+        self.mouse_moved_action(position, 7, self.label_8, "yue")
 
-    def init_labels_pixmap(self):
+    def update_labels_pixmap(self, size=(551, 320)):
         for i, name in enumerate(label_image_paths_dict.keys()):
             if i == 0:
-                self.set_label_init_pixmap(self.label_1, name)
+                self.set_label_pixmap(self.label_1, name, size)
             elif i == 1:
-                self.set_label_init_pixmap(self.label_2, name)
+                self.set_label_pixmap(self.label_2, name, size)
             elif i == 2:
-                self.set_label_init_pixmap(self.label_3, name)
+                self.set_label_pixmap(self.label_3, name, size)
             elif i == 3:
-                self.set_label_init_pixmap(self.label_4, name)
+                self.set_label_pixmap(self.label_4, name, size)
             elif i == 4:
-                self.set_label_init_pixmap(self.label_5, name)
+                self.set_label_pixmap(self.label_5, name, size)
             elif i == 5:
-                self.set_label_init_pixmap(self.label_6, name)
+                self.set_label_pixmap(self.label_6, name, size)
             elif i == 6:
-                self.set_label_init_pixmap(self.label_7, name)
+                self.set_label_pixmap(self.label_7, name, size)
+            elif i == 7:
+                self.set_label_pixmap(self.label_8, name, size)
 
-    def set_label_init_pixmap(self, label, name):
+    def set_label_pixmap(self, label, name, size):
         if self.label_images_dict[name] is not None:
-            qimage = array_to_QImage(self.label_images_dict[name][0], (551, 320))
+            if size is None:
+                size = label.size()
+            qimage = array_to_QImage(self.label_images_dict[name][0], size)
             label.setPixmap(QPixmap.fromImage(qimage))
 
     def mouse_clicked_action(self, index: int, label: ClickableLabel, project_name: str):
