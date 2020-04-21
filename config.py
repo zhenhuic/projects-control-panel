@@ -24,11 +24,11 @@ label_image_paths_dict = {
 # 系统启动命令 (eg. python.exe main.py)
 projects_command_dict = {
     "chen_1": "D:/Anaconda3/envs/xio/python.exe E:/projects-summary/xio-intrusion-detection/gui_main.py",
-    "chen_2": "D:/Anaconda3/envs/legacy/python.exe E:/projects-summary/angle-detection/angle_start.py",
+    "chen_2": "D:/Anaconda3/envs/legacy/python.exe E:/projects-summary/angle-detection/angle_start.py",  # PyQt4 的环境
     "li": "D:/Anaconda3/envs/xio/python.exe E:/projects-summary/QT/Main.py",
     "yv_1": "D:/Anaconda3/envs/xio/python.exe E:/projects-summary/xio/opc_start.py",
     "yv_2": "D:/Anaconda3/envs/xio/python.exe E:/projects-summary/xio/cps_start.py",
-    "wang": "D:/Anaconda3/envs/legacy/python.exe E:/projects-summary/xiaowork/xio_all.py",
+    "wang": "D:/Anaconda3/envs/legacy/python.exe E:/projects-summary/xiaowork/xio_all.py",  # PyQt4 的环境
     "pan": "D:/Anaconda3/envs/xio/python.exe E:/projects-summary/component-detection-camera2/gui_main.py",
     "yue": "D:/Anaconda3/envs/xio/python.exe E:/projects-summary/oee_demo/gui_main.py",
 }
@@ -39,7 +39,7 @@ projects_cwd_dict = {
     "li": "E:/projects-summary",
     "yv_1": "E:/projects-summary/xio",
     "yv_2": "E:/projects-summary/xio",
-    "wang": "E:/projects-summary/xiaowork/",
+    "wang": "E:/projects-summary/xiaowork",
     "pan": "E:/projects-summary/component-detection-camera2",
     "yue": "E:/projects-summary/oee_demo",
 }
