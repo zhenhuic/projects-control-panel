@@ -1,5 +1,6 @@
 import subprocess
 import sys
+import os
 
 from PyQt5 import QtGui
 from PyQt5.QtCore import pyqtSlot
@@ -17,6 +18,21 @@ class MainWindow(QMainWindow, Ui_MainWindow):
     def __init__(self):
         super().__init__()
         self.setupUi(self)
+
+        self.stop.triggered.connect(self.process_exit)
+        self.fullScreen.triggered.connect(self.showFullScreen)
+        self.exitFullScreen.triggered.connect(self.showNormal)
+        self.setupMenu.triggered.connect(lambda: os.system("notepad config.py"))
+
+        self.chen1.triggered.connect(self.label_1_clicked)
+        self.chen2.triggered.connect(self.label_2_clicked)
+        self.li.triggered.connect(self.label_3_clicked)
+        self.yv1.triggered.connect(self.label_4_clicked)
+        self.yv2.triggered.connect(self.label_5_clicked)
+        self.wang.triggered.connect(self.label_6_clicked)
+        self.pan.triggered.connect(self.label_7_clicked)
+        self.yue.triggered.connect(self.label_8_clicked)
+
         self.label_1.clicked.connect(self.label_1_clicked)
         self.label_1.moved.connect(self.label_1_moved)
 
@@ -56,6 +72,10 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 
     def resizeEvent(self, event: QtGui.QResizeEvent) -> None:
         self.update_labels_pixmap(None)  # size设为None表示图片大小自适应
+
+    @pyqtSlot(bool)
+    def process_exit(self, trigger):
+        sys.exit()
 
     # ------------ label 1 -------------
     @pyqtSlot(bool)
