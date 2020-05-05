@@ -2,3 +2,13 @@ Pillow
 numpy
 opencv-python
 PyQt5
+matplotlib
+torch
+torchvision
+tqdm
+opcua
+cryptography
+wxpy
+pymysql
+serial
+
