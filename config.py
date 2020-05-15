@@ -36,7 +36,7 @@ projects_command_dict = {
 projects_cwd_dict = {
     "chen_1": "E:/projects-summary/xio-intrusion-detection",
     "chen_2": "E:/projects-summary/angle-detection",
-    "li": "E:/projects-summary",
+    "li": "E:/projects-summary/QT",
     "yv_1": "E:/projects-summary/xio",
     "yv_2": "E:/projects-summary/xio",
     "wang": "E:/projects-summary/xiaowork",
