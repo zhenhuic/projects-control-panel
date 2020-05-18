@@ -30,7 +30,7 @@ projects_command_dict = {
     "yv_2": "D:/Anaconda3/envs/xio/python.exe E:/projects-summary/xio/cps_start.py",
     "wang": "D:/Anaconda3/envs/legacy/python.exe E:/projects-summary/xiaowork/xio_all.py",  # PyQt4 的环境
     "pan": "D:/Anaconda3/envs/xio/python.exe E:/projects-summary/component-detection-camera2/gui_main.py",
-    "yue": "D:/Anaconda3/envs/xio/python.exe E:/projects-summary/oee_demo/gui_main.py",  # PyQt4 的环境
+    "yue": "D:/Anaconda3/envs/legacy/python.exe E:/projects-summary/xioLift/xio_all.py",  # PyQt4 的环境
 }
 
 projects_cwd_dict = {
@@ -41,5 +41,5 @@ projects_cwd_dict = {
     "yv_2": "E:/projects-summary/xio",
     "wang": "E:/projects-summary/xiaowork",
     "pan": "E:/projects-summary/component-detection-camera2",
-    "yue": "E:/projects-summary/oee_demo",
+    "yue": "E:/projects-summary/xioLift",
 }
