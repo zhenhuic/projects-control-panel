@@ -1,18 +1,18 @@
 # 以系统开发者人名作为key值
 projects_view_name_dict = {
-    "chen_1": "智能异常事件监测与保护系统",
-    "chen_2": "产品工件智能角度检测系统",
-    "li": "传感器数据采集分析与可视化系统",
-    "yv_1": "生产线报警智能检测分析系统",
-    "yv_2": "工厂CPS产线建模与分析系统",
-    "wang": "工厂侧板效率智能检测系统",
-    "pan": "产品包装配件完整性监测系统",
-    "yue": "厚板线OEE效率检测系统",
+    "chen_1": "生产场景中异常事件的探测",
+    "chen_2": "生产流程的多维分析与可视化",
+    "li": "生产线上传感器采集、分析与显示",
+    "yv_1": "日志数据的度量和自动抽取",
+    "yv_2": "生产业务流程建模、挖掘与优化",
+    "wang": "生产操作行为的自动识别-侧板焊接",
+    "pan": "生产场景中目标的自动检测",
+    "yue": "生产操作行为的自动识别-厚板线",
 }
 
 label_image_paths_dict = {
     "chen_1": "images/intrusion.jpg",
-    "chen_2": "images/angle_detection.jpg",
+    "chen_2": "images/data_analysis.jpg",
     "li": "images/data_analysis.jpg",
     "yv_1": "images/opc_start.png",
     "yv_2": "images/cps_start.png",
@@ -24,7 +24,7 @@ label_image_paths_dict = {
 # 系统启动命令 (eg. python.exe main.py)
 projects_command_dict = {
     "chen_1": "D:/Anaconda3/envs/xio/python.exe E:/projects-summary/xio-intrusion-detection/gui_main.py",
-    "chen_2": "D:/Anaconda3/envs/legacy/python.exe E:/projects-summary/angle-detection/angle_start.py",  # PyQt4 的环境
+    "chen_2": "D:/Anaconda3/envs/xio/python.exe E:/projects-summary/data-multidimensional-analysis/main.py",
     "li": "D:/Anaconda3/envs/xio/python.exe E:/projects-summary/QT/Main.py",
     "yv_1": "D:/Anaconda3/envs/xio/python.exe E:/projects-summary/xio/opc_start.py",
     "yv_2": "D:/Anaconda3/envs/xio/python.exe E:/projects-summary/xio/cps_start.py",
@@ -35,7 +35,7 @@ projects_command_dict = {
 
 projects_cwd_dict = {
     "chen_1": "E:/projects-summary/xio-intrusion-detection",
-    "chen_2": "E:/projects-summary/angle-detection",
+    "chen_2": "E:/projects-summary/data-multidimensional-analysis",
     "li": "E:/projects-summary/QT",
     "yv_1": "E:/projects-summary/xio",
     "yv_2": "E:/projects-summary/xio",
