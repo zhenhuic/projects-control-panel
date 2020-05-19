@@ -11,7 +11,7 @@ from panel_gui.control_panel import Ui_MainWindow
 from panel_gui.cunstom_widgets import ClickableLabel
 from utils.pixmap_prep import images_prep_factory, array_to_QImage
 from config import label_image_paths_dict, projects_command_dict, \
-    projects_cwd_dict, projects_view_name_dict
+    projects_cwd_dict, projects_view_name_dict, projects_icon_position
 
 
 class MainWindow(QMainWindow, Ui_MainWindow):
@@ -61,10 +61,10 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         # 0 -> 无鼠标移动到该区域且未启动程序
         # 1 -> 鼠标移动到该区域但未启动程序
         # 2 -> 已启动程序
-        self.statuses = [0] * 8
+        self.statuses = dict(zip(projects_cwd_dict.keys(), [0] * len(projects_cwd_dict)))
 
         # 系统程序进程对象
-        self.processes = [None] * 8
+        self.processes = dict(zip(projects_cwd_dict.keys(), [None] * len(projects_cwd_dict)))
 
         self.label_images_dict = images_prep_factory(label_image_paths_dict, projects_view_name_dict)
         # 初始化界面图片，这里界面打开会调用自动调用重写的resizeEvent方法，不需要手动初始化
@@ -80,93 +80,84 @@ class MainWindow(QMainWindow, Ui_MainWindow):
     # ------------ label 1 -------------
     @pyqtSlot(bool)
     def label_1_clicked(self, trigger):
-        self.mouse_clicked_action(0, self.label_1, "chen_1")
+        self.mouse_clicked_action(self.label_1, projects_icon_position[0])
 
     @pyqtSlot(tuple)
     def label_1_moved(self, position):
-        self.mouse_moved_action(position, 0, self.label_1, "chen_1")
+        self.mouse_moved_action(position, self.label_1, projects_icon_position[0])
 
     # ------------ label 2 -------------
     @pyqtSlot(bool)
     def label_2_clicked(self, trigger):
-        self.mouse_clicked_action(1, self.label_2, "chen_2")
+        self.mouse_clicked_action(self.label_2, projects_icon_position[1])
 
     @pyqtSlot(tuple)
     def label_2_moved(self, position):
-        self.mouse_moved_action(position, 1, self.label_2, "chen_2")
+        self.mouse_moved_action(position, self.label_2, projects_icon_position[1])
 
     # ------------ label 3 -------------
     @pyqtSlot(bool)
     def label_3_clicked(self, trigger):
-        self.mouse_clicked_action(2, self.label_3, "li")
+        self.mouse_clicked_action(self.label_3, projects_icon_position[2])
 
     @pyqtSlot(tuple)
     def label_3_moved(self, position):
-        self.mouse_moved_action(position, 2, self.label_3, "li")
+        self.mouse_moved_action(position, self.label_3, projects_icon_position[2])
 
     # ------------ label 4 -------------
     @pyqtSlot(bool)
     def label_4_clicked(self, trigger):
-        self.mouse_clicked_action(3, self.label_4, "yv_1")
+        self.mouse_clicked_action(self.label_4, projects_icon_position[3])
 
     @pyqtSlot(tuple)
     def label_4_moved(self, position):
-        self.mouse_moved_action(position, 3, self.label_4, "yv_1")
+        self.mouse_moved_action(position, self.label_4, projects_icon_position[3])
 
     # ------------ label 5 -------------
     @pyqtSlot(bool)
     def label_5_clicked(self, trigger):
-        self.mouse_clicked_action(4, self.label_5, "yv_2")
+        self.mouse_clicked_action(self.label_5, projects_icon_position[4])
 
     @pyqtSlot(tuple)
     def label_5_moved(self, position):
-        self.mouse_moved_action(position, 4, self.label_5, "yv_2")
+        self.mouse_moved_action(position, self.label_5, projects_icon_position[4])
 
     # ------------ label 6 -------------
     @pyqtSlot(bool)
     def label_6_clicked(self, trigger):
-        self.mouse_clicked_action(5, self.label_6, "wang")
+        self.mouse_clicked_action(self.label_6, projects_icon_position[5])
 
     @pyqtSlot(tuple)
     def label_6_moved(self, position):
-        self.mouse_moved_action(position, 5, self.label_6, "wang")
+        self.mouse_moved_action(position, self.label_6, projects_icon_position[5])
 
     # ------------ label 7 -------------
     @pyqtSlot(bool)
     def label_7_clicked(self, trigger):
-        self.mouse_clicked_action(6, self.label_7, "pan")
+        self.mouse_clicked_action(self.label_7, projects_icon_position[6])
 
     @pyqtSlot(tuple)
     def label_7_moved(self, position):
-        self.mouse_moved_action(position, 6, self.label_7, "pan")
+        self.mouse_moved_action(position, self.label_7, projects_icon_position[6])
 
     # ------------ label 8 -------------
     @pyqtSlot(bool)
     def label_8_clicked(self, trigger):
-        self.mouse_clicked_action(7, self.label_8, "yue")
+        self.mouse_clicked_action(self.label_8, projects_icon_position[7])
 
     @pyqtSlot(tuple)
     def label_8_moved(self, position):
-        self.mouse_moved_action(position, 7, self.label_8, "yue")
+        self.mouse_moved_action(position, self.label_8, projects_icon_position[7])
 
     def update_labels_pixmap(self, size=(551, 320)):
-        for i, name in enumerate(label_image_paths_dict.keys()):
-            if i == 0:
-                self.set_label_pixmap(self.label_1, name, size)
-            elif i == 1:
-                self.set_label_pixmap(self.label_2, name, size)
-            elif i == 2:
-                self.set_label_pixmap(self.label_3, name, size)
-            elif i == 3:
-                self.set_label_pixmap(self.label_4, name, size)
-            elif i == 4:
-                self.set_label_pixmap(self.label_5, name, size)
-            elif i == 5:
-                self.set_label_pixmap(self.label_6, name, size)
-            elif i == 6:
-                self.set_label_pixmap(self.label_7, name, size)
-            elif i == 7:
-                self.set_label_pixmap(self.label_8, name, size)
+        self.set_label_pixmap(self.label_1, projects_icon_position[0], size)
+        self.set_label_pixmap(self.label_2, projects_icon_position[1], size)
+        self.set_label_pixmap(self.label_3, projects_icon_position[2], size)
+        self.set_label_pixmap(self.label_4, projects_icon_position[3], size)
+        self.set_label_pixmap(self.label_5, projects_icon_position[4], size)
+        self.set_label_pixmap(self.label_6, projects_icon_position[5], size)
+        self.set_label_pixmap(self.label_7, projects_icon_position[6], size)
+        self.set_label_pixmap(self.label_8, projects_icon_position[7], size)
 
     def set_label_pixmap(self, label, name, size):
         if self.label_images_dict[name] is not None:
@@ -175,11 +166,11 @@ class MainWindow(QMainWindow, Ui_MainWindow):
             qimage = array_to_QImage(self.label_images_dict[name][0], size)
             label.setPixmap(QPixmap.fromImage(qimage))
 
-    def mouse_clicked_action(self, index: int, label: ClickableLabel, project_name: str):
-        if self.statuses[index] == 2:
-            if self.processes[index] is not None:
-                self.processes[index].terminate()
-                self.statuses[index] = 1
+    def mouse_clicked_action(self, label: ClickableLabel, project_name: str):
+        if self.statuses[project_name] == 2:
+            if self.processes[project_name] is not None:
+                self.processes[project_name].terminate()
+                self.statuses[project_name] = 1
                 msg = "终止系统 " + project_name
                 print(msg)
                 self.statusbar.showMessage("终止系统 " + project_name)
@@ -194,9 +185,9 @@ class MainWindow(QMainWindow, Ui_MainWindow):
                 self.statusbar.showMessage(msg)
         else:
             if projects_command_dict[project_name] and projects_cwd_dict[project_name]:
-                self.processes[index] = subprocess.Popen(projects_command_dict[project_name],
-                                                         cwd=projects_cwd_dict[project_name])
-                self.statuses[index] = 2
+                self.processes[project_name] = subprocess.Popen(projects_command_dict[project_name],
+                                                                cwd=projects_cwd_dict[project_name])
+                self.statuses[project_name] = 2
                 msg = "启动系统 " + project_name
                 print(msg)
                 self.statusbar.showMessage(msg)
@@ -206,12 +197,12 @@ class MainWindow(QMainWindow, Ui_MainWindow):
                     qimage = array_to_QImage(self.label_images_dict[project_name][2], label_size)
                     label.setPixmap(QPixmap.fromImage(qimage))
 
-    def mouse_moved_action(self, position: tuple, index: int, label: ClickableLabel, project_name: str):
+    def mouse_moved_action(self, position: tuple, label: ClickableLabel, project_name: str):
         width = label.size().width()
         height = label.size().height()
         if self.mouse_incoming(position, (width, height)):
-            if self.statuses[index] == 0:
-                self.statuses[index] = 1
+            if self.statuses[project_name] == 0:
+                self.statuses[project_name] = 1
                 if self.label_images_dict[project_name] is not None:
                     label_size = label.size()
                     # print(label_size)
@@ -222,8 +213,8 @@ class MainWindow(QMainWindow, Ui_MainWindow):
                     print(msg)
                     self.statusbar.showMessage(msg)
         else:
-            if self.statuses[index] == 1:
-                self.statuses[index] = 0
+            if self.statuses[project_name] == 1:
+                self.statuses[project_name] = 0
                 if self.label_images_dict[project_name] is not None:
                     label_size = label.size()
                     qimage = array_to_QImage(self.label_images_dict[project_name][0], label_size)

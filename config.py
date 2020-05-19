@@ -10,6 +10,9 @@ projects_view_name_dict = {
     "yue": "生产操作行为的自动识别-厚板线",
 }
 
+# 系统图标的位置
+projects_icon_position = ["wang", "pan", "yv_1", "li", "yv_2", "chen_1", "chen_2", "yue"]
+
 label_image_paths_dict = {
     "chen_1": "images/intrusion.jpg",
     "chen_2": "images/data_analysis.jpg",
