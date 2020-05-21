@@ -5,7 +5,7 @@ from PyQt5.QtCore import QSize
 from PyQt5.QtGui import QImage
 
 
-def draw_Chinese_words(img_array, contents, coord, color=(255, 255, 255), size=40):
+def draw_Chinese_words(img_array, contents, coord, color=(255, 255, 255), size=38):
     img_array = cv2.cvtColor(img_array, cv2.COLOR_BGR2RGB)
     img = Image.fromarray(img_array)
 

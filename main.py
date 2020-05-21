@@ -8,7 +8,7 @@ from PyQt5.QtGui import QPixmap
 from PyQt5.QtWidgets import QMainWindow, QApplication
 
 from panel_gui.control_panel import Ui_MainWindow
-from panel_gui.cunstom_widgets import ClickableLabel
+from panel_gui.custom_widgets import ClickableLabel
 from utils.pixmap_prep import images_prep_factory, array_to_QImage
 from config import label_image_paths_dict, projects_command_dict, \
     projects_cwd_dict, projects_view_name_dict, projects_icon_position
@@ -24,14 +24,13 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.exitFullScreen.triggered.connect(self.showNormal)
         self.setupMenu.triggered.connect(lambda: os.system("notepad config.py"))
 
-        self.chen1.triggered.connect(self.label_1_clicked)
-        self.chen2.triggered.connect(self.label_2_clicked)
-        self.li.triggered.connect(self.label_3_clicked)
-        self.yv1.triggered.connect(self.label_4_clicked)
-        self.yv2.triggered.connect(self.label_5_clicked)
-        self.wang.triggered.connect(self.label_6_clicked)
-        self.pan.triggered.connect(self.label_7_clicked)
-        self.yue.triggered.connect(self.label_8_clicked)
+        self.sys_1.triggered.connect(self.label_1_clicked)
+        self.sys_2.triggered.connect(self.label_2_clicked)
+        self.sys_3.triggered.connect(self.label_3_clicked)
+        self.sys_4.triggered.connect(self.label_4_clicked)
+        self.sys_5.triggered.connect(self.label_5_clicked)
+        self.sys_6.triggered.connect(self.label_6_clicked)
+        self.sys_7.triggered.connect(self.label_7_clicked)
 
         self.label_1.clicked.connect(self.label_1_clicked)
         self.label_1.moved.connect(self.label_1_moved)

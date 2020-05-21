@@ -1,14 +1,14 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'E:\Lab417\projects-control-panel\panel_gui\control_panel.ui'
+# Form implementation generated from reading ui file 'E:\projects-summary\projects-control-panel\panel_gui\control_panel.ui'
 #
-# Created by: PyQt5 UI code generator 5.13.0
+# Created by: PyQt5 UI code generator 5.14.2
 #
 # WARNING! All changes made in this file will be lost!
 
 
 from PyQt5 import QtCore, QtGui, QtWidgets
-from panel_gui.cunstom_widgets import ClickableLabel
+from panel_gui.custom_widgets import ClickableLabel
 
 
 class Ui_MainWindow(object):
@@ -52,7 +52,7 @@ class Ui_MainWindow(object):
         self.scrollArea.setWidgetResizable(True)
         self.scrollArea.setObjectName("scrollArea")
         self.scrollAreaWidgetContents = QtWidgets.QWidget()
-        self.scrollAreaWidgetContents.setGeometry(QtCore.QRect(0, 0, 1263, 1249))
+        self.scrollAreaWidgetContents.setGeometry(QtCore.QRect(0, 0, 1254, 1249))
         self.scrollAreaWidgetContents.setObjectName("scrollAreaWidgetContents")
         self.horizontalLayout = QtWidgets.QHBoxLayout(self.scrollAreaWidgetContents)
         self.horizontalLayout.setContentsMargins(0, 9, 0, 9)
@@ -192,7 +192,7 @@ class Ui_MainWindow(object):
         self.statusbar.setObjectName("statusbar")
         MainWindow.setStatusBar(self.statusbar)
         self.menuBar = QtWidgets.QMenuBar(MainWindow)
-        self.menuBar.setGeometry(QtCore.QRect(0, 0, 1280, 23))
+        self.menuBar.setGeometry(QtCore.QRect(0, 0, 1280, 30))
         self.menuBar.setStyleSheet("background-color: rgb(35, 35, 35);\n"
 "selection-background-color: rgb(100, 100, 100);\n"
 "color: rgb(255, 255, 255);")
@@ -212,36 +212,35 @@ class Ui_MainWindow(object):
         self.start.setObjectName("start")
         self.stop = QtWidgets.QAction(MainWindow)
         self.stop.setObjectName("stop")
-        self.chen1 = QtWidgets.QAction(MainWindow)
-        self.chen1.setObjectName("chen1")
-        self.chen2 = QtWidgets.QAction(MainWindow)
-        self.chen2.setObjectName("chen2")
-        self.li = QtWidgets.QAction(MainWindow)
-        self.li.setObjectName("li")
-        self.yv1 = QtWidgets.QAction(MainWindow)
-        self.yv1.setObjectName("yv1")
-        self.yv2 = QtWidgets.QAction(MainWindow)
-        self.yv2.setObjectName("yv2")
-        self.wang = QtWidgets.QAction(MainWindow)
-        self.wang.setObjectName("wang")
-        self.pan = QtWidgets.QAction(MainWindow)
-        self.pan.setObjectName("pan")
-        self.yue = QtWidgets.QAction(MainWindow)
-        self.yue.setObjectName("yue")
+        self.sys_1 = QtWidgets.QAction(MainWindow)
+        self.sys_1.setObjectName("sys_1")
+        self.sys_2 = QtWidgets.QAction(MainWindow)
+        self.sys_2.setObjectName("sys_2")
+        self.sys_3 = QtWidgets.QAction(MainWindow)
+        self.sys_3.setObjectName("sys_3")
+        self.sys_4 = QtWidgets.QAction(MainWindow)
+        self.sys_4.setObjectName("sys_4")
+        self.sys_5 = QtWidgets.QAction(MainWindow)
+        self.sys_5.setObjectName("sys_5")
+        self.sys_6 = QtWidgets.QAction(MainWindow)
+        self.sys_6.setObjectName("sys_6")
+        self.sys_7 = QtWidgets.QAction(MainWindow)
+        self.sys_7.setObjectName("sys_7")
+        self.sys_8 = QtWidgets.QAction(MainWindow)
+        self.sys_8.setObjectName("sys_8")
         self.fullScreen = QtWidgets.QAction(MainWindow)
         self.fullScreen.setObjectName("fullScreen")
         self.exitFullScreen = QtWidgets.QAction(MainWindow)
         self.exitFullScreen.setObjectName("exitFullScreen")
         self.processMenu.addAction(self.start)
         self.processMenu.addAction(self.stop)
-        self.systemMenu.addAction(self.chen1)
-        self.systemMenu.addAction(self.chen2)
-        self.systemMenu.addAction(self.li)
-        self.systemMenu.addAction(self.yv1)
-        self.systemMenu.addAction(self.yv2)
-        self.systemMenu.addAction(self.wang)
-        self.systemMenu.addAction(self.pan)
-        self.systemMenu.addAction(self.yue)
+        self.systemMenu.addAction(self.sys_1)
+        self.systemMenu.addAction(self.sys_2)
+        self.systemMenu.addAction(self.sys_3)
+        self.systemMenu.addAction(self.sys_4)
+        self.systemMenu.addAction(self.sys_5)
+        self.systemMenu.addAction(self.sys_6)
+        self.systemMenu.addAction(self.sys_7)
         self.setupMenu.addAction(self.openConfigFile)
         self.viewMenu.addAction(self.fullScreen)
         self.viewMenu.addAction(self.exitFullScreen)
@@ -255,8 +254,8 @@ class Ui_MainWindow(object):
 
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
-        MainWindow.setWindowTitle(_translate("MainWindow", "基于人工智能的生产流程多维分析与可视化系统"))
-        self.titleLabel.setText(_translate("MainWindow", "基于人工智能的生产流程多维分析与可视化系统"))
+        MainWindow.setWindowTitle(_translate("MainWindow", "基于人工智能的生产流程分析与可视化系统"))
+        self.titleLabel.setText(_translate("MainWindow", "基于人工智能的生产流程分析与可视化系统"))
         self.processMenu.setTitle(_translate("MainWindow", "程序"))
         self.systemMenu.setTitle(_translate("MainWindow", "系统"))
         self.setupMenu.setTitle(_translate("MainWindow", "设置"))
@@ -264,13 +263,13 @@ class Ui_MainWindow(object):
         self.openConfigFile.setText(_translate("MainWindow", "打开配置文件"))
         self.start.setText(_translate("MainWindow", "启动"))
         self.stop.setText(_translate("MainWindow", "终止"))
-        self.chen1.setText(_translate("MainWindow", "智能异常事件监测与保护系统"))
-        self.chen2.setText(_translate("MainWindow", "产品工件智能角度检测系统"))
-        self.li.setText(_translate("MainWindow", "传感器数据采集分析与可视化系统"))
-        self.yv1.setText(_translate("MainWindow", "生产线报警智能检测分析系统"))
-        self.yv2.setText(_translate("MainWindow", "工厂CPS产线建模与分析系统"))
-        self.wang.setText(_translate("MainWindow", "工厂侧板效率智能检测系统"))
-        self.pan.setText(_translate("MainWindow", "产品包装配件完整性监测系统"))
-        self.yue.setText(_translate("MainWindow", "厚板线OEE效率检测系统"))
+        self.sys_1.setText(_translate("MainWindow", "生产操作行为的自动识别"))
+        self.sys_2.setText(_translate("MainWindow", "生产场景中目标的自动检测"))
+        self.sys_3.setText(_translate("MainWindow", "日志数据的度量和自动抽取"))
+        self.sys_4.setText(_translate("MainWindow", "制造业生产线上传感器的采集、分析与显示"))
+        self.sys_5.setText(_translate("MainWindow", "复杂生产业务流程建模、挖掘与优化"))
+        self.sys_6.setText(_translate("MainWindow", "生产场景中异常事件的探测"))
+        self.sys_7.setText(_translate("MainWindow", "生产流程的多维分析与可视化"))
+        self.sys_8.setText(_translate("MainWindow", "厚板线OEE效率检测系统"))
         self.fullScreen.setText(_translate("MainWindow", "全屏模式"))
         self.exitFullScreen.setText(_translate("MainWindow", "退出全屏"))

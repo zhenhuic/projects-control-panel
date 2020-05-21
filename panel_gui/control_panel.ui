@@ -99,7 +99,7 @@ color: rgb(255, 255, 255);</string>
         <rect>
          <x>0</x>
          <y>0</y>
-         <width>1263</width>
+         <width>1254</width>
          <height>1249</height>
         </rect>
        </property>
@@ -433,7 +433,7 @@ color: rgb(255, 255, 255);</string>
      <x>0</x>
      <y>0</y>
      <width>1280</width>
-     <height>23</height>
+     <height>30</height>
     </rect>
    </property>
    <property name="styleSheet">
@@ -452,14 +452,13 @@ color: rgb(255, 255, 255);</string>
     <property name="title">
      <string>系统</string>
     </property>
-    <addaction name="chen1"/>
-    <addaction name="chen2"/>
-    <addaction name="li"/>
-    <addaction name="yv1"/>
-    <addaction name="yv2"/>
-    <addaction name="wang"/>
-    <addaction name="pan"/>
-    <addaction name="yue"/>
+    <addaction name="sys_1"/>
+    <addaction name="sys_2"/>
+    <addaction name="sys_3"/>
+    <addaction name="sys_4"/>
+    <addaction name="sys_5"/>
+    <addaction name="sys_6"/>
+    <addaction name="sys_7"/>
    </widget>
    <widget class="QMenu" name="setupMenu">
     <property name="title">
@@ -494,42 +493,42 @@ color: rgb(255, 255, 255);</string>
     <string>终止</string>
    </property>
   </action>
-  <action name="chen1">
+  <action name="sys_1">
    <property name="text">
-    <string>智能异常事件监测与保护系统</string>
+    <string>生产操作行为的自动识别</string>
    </property>
   </action>
-  <action name="chen2">
+  <action name="sys_2">
    <property name="text">
-    <string>产品工件智能角度检测系统</string>
+    <string>生产场景中目标的自动检测</string>
    </property>
   </action>
-  <action name="li">
+  <action name="sys_3">
    <property name="text">
-    <string>传感器数据采集分析与可视化系统</string>
+    <string>日志数据的度量和自动抽取</string>
    </property>
   </action>
-  <action name="yv1">
+  <action name="sys_4">
    <property name="text">
-    <string>生产线报警智能检测分析系统</string>
+    <string>制造业生产线上传感器的采集、分析与显示</string>
    </property>
   </action>
-  <action name="yv2">
+  <action name="sys_5">
    <property name="text">
-    <string>工厂CPS产线建模与分析系统</string>
+    <string>复杂生产业务流程建模、挖掘与优化</string>
    </property>
   </action>
-  <action name="wang">
+  <action name="sys_6">
    <property name="text">
-    <string>工厂侧板效率智能检测系统</string>
+    <string>生产场景中异常事件的探测</string>
    </property>
   </action>
-  <action name="pan">
+  <action name="sys_7">
    <property name="text">
-    <string>产品包装配件完整性监测系统</string>
+    <string>生产流程的多维分析与可视化</string>
    </property>
   </action>
-  <action name="yue">
+  <action name="sys_8">
    <property name="text">
     <string>厚板线OEE效率检测系统</string>
    </property>

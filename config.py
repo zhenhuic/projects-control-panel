@@ -4,8 +4,8 @@ projects_view_name_dict = {
     "chen_2": "生产流程的多维分析与可视化",
     "li": "生产线上传感器采集、分析与显示",
     "yv_1": "日志数据的度量和自动抽取",
-    "yv_2": "生产业务流程建模、挖掘与优化",
-    "wang": "生产操作行为的自动识别-侧板焊接",
+    "yv_2": "复杂生产业务流程建模、挖掘与优化",
+    "wang": "生产操作行为的自动识别",
     "pan": "生产场景中目标的自动检测",
     "yue": "生产操作行为的自动识别-厚板线",
 }
@@ -27,7 +27,7 @@ label_image_paths_dict = {
 
 # 系统启动命令 (eg. python.exe main.py)
 projects_command_dict = {
-    "chen_1": "D:/Anaconda3/envs/xio/python.exe E:/projects-summary/xio-intrusion-detection/gui_main.py",
+    "chen_1": "D:/Anaconda3/envs/xio/python.exe E:/projects-summary/xio-intrusion-detection/run_forever.py",
     "chen_2": "D:/Anaconda3/envs/xio/python.exe E:/projects-summary/data-multidimensional-analysis/main.py",
     "li": "D:/Anaconda3/envs/xio/python.exe E:/projects-summary/QT/Main.py",
     "yv_1": "D:/Anaconda3/envs/xio/python.exe E:/projects-summary/xio/opc_start.py",
