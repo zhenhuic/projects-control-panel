@@ -9,6 +9,6 @@ def resize(img_path: str, dsize: tuple):
 
 
 if __name__ == '__main__':
-    img_path = "../images/sensors.jpg"
+    img_path = "../images/agv.png"
     img = resize(img_path, (640, 480))
-    cv2.imwrite("../images/sensors.jpg", img)
+    cv2.imwrite("../images/agv.jpg", img)
